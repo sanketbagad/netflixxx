@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// please work
+
 initializeApp({
     credential: cert({
         "type": process.env.FIREBASE_TYPE,
