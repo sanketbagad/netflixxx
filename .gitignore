@@ -1,0 +1,11 @@
+# create a normal .gitignore for node js project
+node_modules
+npm-debug.log
+# ignore all files in the dist directory
+dist/*
+# except the dist/index.html file
+!dist/index.html
+
+.env
+
+# Environment variables

@@ -1,0 +1,38 @@
+export const Movies = [
+    {
+        name: "The Shawshank Redemption",
+        desc: "One of the best movies ever made",
+        titleImage: "18.jpg",
+        image: "18.jpg",
+        category: "Drama",
+        language: "English",
+        year: 2000,
+        time: 2.5,
+        video: "",
+        rate: 9.3,
+    },
+    {
+        name: "The Godfather",
+        desc: "One of the best movies ever made",
+        titleImage: "19.jpg",
+        image: "19.jpg",
+        category: "Crime",
+        language: "English",
+        year: 2000,
+        time: 2.5,
+        video: "",
+        rate: 9.2,
+    },
+    {
+        name: "The Godfather: Part II",
+        desc: "One of the best movies ever made",
+        titleImage: "20.jpg",
+        image: "20.jpg",
+        category: "Crime",
+        language: "English",
+        year: 2000,
+        time: 2.5,
+        video: "",
+        rate: 9.0,
+    }
+];
