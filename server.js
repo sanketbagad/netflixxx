@@ -17,7 +17,7 @@ app.use(express.json());
 connectDB();
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Pallu, A Gift for you');
 });
 
 app.use('/api/users', userRouter);
