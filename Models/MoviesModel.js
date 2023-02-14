@@ -67,6 +67,10 @@ const movieSchema = new mongoose.Schema({
     video: {
         type: String,
     },
+    trailer: {
+        type: String,
+        required: true,
+    },
     rate: {
         type: Number,
         required: true,

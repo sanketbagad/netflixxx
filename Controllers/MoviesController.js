@@ -172,7 +172,7 @@ const deleteMovie = asyncHandler(async (req, res) => {
 
 
 const createMovie = asyncHandler(async (req, res) => {
-    const { name, desc, category, time, language, rate, year, image, isPaid, titleImage, video } = req.body;
+    const { name, desc, category, time, language, rate, year, image, isPaid, titleImage, video, trailer } = req.body;
     try {
         const movie = new MovieModel({
             name,
@@ -186,6 +186,7 @@ const createMovie = asyncHandler(async (req, res) => {
             isPaid,
             titleImage,
             video,
+            trailer,
             casts: req.body.casts,
             user: req.user._id,
         });
