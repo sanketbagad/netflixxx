@@ -20,6 +20,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
       email,
       password: hashedPassword,
       image,
+      hasPaid: false,
     });
 
     if (user) {
@@ -56,6 +57,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
                 email: user.email,
                 image: user.image,
                 isAdmin: user.isAdmin,
+                hasPaid: user.hasPaid,
                 token: generateToken(user._id),
             });
         }
@@ -237,7 +239,56 @@ const deleteAllUsers = expressAsyncHandler(async (req, res) => {
     }
 });
 
+// google login
+const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
+    const { email, name, image } = req.body;
+    try {
+        // first check if user already exists using email
+        let user = await UserModel.findOne({ email });
+        if (user) {
+            // if user exists, generate token and send it back
+            res.json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                image: user.image,
+                isAdmin: user.isAdmin,
+                token: generateToken(user._id),
+            });
+
+        }
+        else {
+            // if user does not exist, create a new user
+            user = await UserModel.create({
+                name,
+                email,
+                image,
+                password: 'google',
+            });
+            if (user) {
+                res.json({
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    image: user.image,
+                    isAdmin: user.isAdmin,
+                    token: generateToken(user._id),
+                });
+            }
+            else {
+                res.status(400);
+                throw new Error('Invalid user data');
+            }
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+    
 
 
 
-export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers };
+
+
+export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers, googleRegisterorLogin };

@@ -20,6 +20,12 @@ const paymentSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    subscriptionStartDate: {
+        type: Date,
+    },
+    subscriptionEndDate: {
+        type: Date,
+    },        
 },
 {
     timestamps: true,
