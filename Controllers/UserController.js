@@ -27,7 +27,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
         sendEmail(user.email, `Welcome to Netflixxx, ${user.fullName}!`, `Thank you for registering with us. We hope you enjoy your stay!`, `<h1>Welcome to Netflixxx, ${user.fullName}!</h1><p>Thank you for registering with us. We hope you enjoy your stay!</p> <h2> Subscription Details </h2> <p> You have not yet subscribed to any of our plans. Please visit our website to subscribe to a plan. </p>`);
         res.status(201).json({
             _id: user._id,
-            name: user.name,
+            name: user.fullName,
             email: user.email,
             image: user.image,
             isAdmin: user.isAdmin,
@@ -53,7 +53,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
         if (user && (await bcrypt.compare(password, user.password))) {
             res.json({
                 _id: user._id,
-                name: user.name,
+                name: user.fullName,
                 email: user.email,
                 image: user.image,
                 isAdmin: user.isAdmin,
@@ -75,13 +75,13 @@ const updateUserProfile = expressAsyncHandler(async (req, res) => {
     try {
         const user = await UserModel.findById(req.user._id);
         if (user) {
-            user.name = name || user.name;
+            user.fullName = name || user.fullName;
             user.email = email || user.email;
             user.image = image || user.image;
             const updatedUser = await user.save();
             res.json({
                 _id: updatedUser._id,
-                name: updatedUser.name,
+                name: updatedUser.fullName,
                 email: updatedUser.email,
                 image: updatedUser.image,
                 isAdmin: updatedUser.isAdmin,
