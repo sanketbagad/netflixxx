@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, updateUserProfile, deleteUser, changePassword, getUserLikedMovies, addLikedMovie, removeAllLikedMovies, getUsers, deleteUserById, deleteAllUsers  } from '../Controllers/UserController.js';
+import { registerUser, loginUser, updateUserProfile, deleteUser, changePassword, getUserLikedMovies, addLikedMovie, removeLikedMovie, removeAllLikedMovies, getUsers, deleteUserById, deleteAllUsers  } from '../Controllers/UserController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.put('/changePassword', protect, changePassword);
 router.get('/likedMovies', protect, getUserLikedMovies);
 router.put('/likedMovies', protect, addLikedMovie);
 router.delete('/likedMovies', protect, removeAllLikedMovies);
+router.delete('/likedMovies', protect, removeLikedMovie);
 router.get('/users', protect,  admin, getUsers);
 router.delete('/users/:id', protect, admin, deleteUserById);
 router.delete('/users', protect, admin, deleteAllUsers);

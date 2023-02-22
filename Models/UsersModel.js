@@ -31,6 +31,28 @@ const paymentSchema = new mongoose.Schema({
     timestamps: true,
 });
 
+const otpSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    otp: {
+        type: Number,
+        required: true,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false,
+    },
+    otpExpires: {
+        type: Date,
+    },
+},
+{
+    timestamps: true,
+});
+
 const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
@@ -78,6 +100,7 @@ const userSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("User", userSchema);
 const PaymentModel = mongoose.model("Payment", paymentSchema);
+const OtpModel = mongoose.model("Otp", otpSchema);
 
-export { UserModel, PaymentModel };
+export { UserModel, PaymentModel, OtpModel };
 

@@ -3,6 +3,7 @@ import {UserModel} from "../Models/UsersModel.js";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../middleware/authMiddleware.js";
 import sendEmail from "../middleware/emailMiddleware.js";
+import { OtpModel } from "../Models/UsersModel.js";
 const registerUser = expressAsyncHandler(async (req, res) => {
   const { name, email, password, image } = req.body;
   try {
@@ -199,6 +200,28 @@ const removeAllLikedMovies = expressAsyncHandler(async (req, res) => {
     }
 });
 
+const removeLikedMovie = expressAsyncHandler(async (req, res) => {
+    const { movieId } = req.body;
+    try {
+        const user = await UserModel.findById(req.user._id);
+        if (user) {
+            if (!user.likedMovies.includes(movieId)) {
+                res.status(400);
+                throw new Error('Movie not liked');
+            }
+            user.likedMovies = user.likedMovies.filter((movie) => movie != movieId);
+            await user.save();
+            res.json(user.likedMovies);
+        }
+        else {
+            res.status(404);
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
 // Admin only
 const getUsers = expressAsyncHandler(async (req, res) => {
     try {
@@ -285,10 +308,59 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
     }
 });
 
+const sendOTP = expressAsyncHandler(async (req, res) => {
+    const { email } = req.body;
+    try {
+        
+        const user = await UserModel.findOne({ email });
+
+        if (user) {
+            // get userID from user then create a new OTP in OTP collection with userID, OTP, expiry time and isVerified fields
+            const otp = Math.floor(100000 + Math.random() * 900000);
+            const expiryTime = Date.now() + 300000;
+            const newOTP = await OtpModel.create({
+                userID: user._id,
+                otp,
+                expiryTime,
+                isVerified: false,
+            });
+            if (newOTP) {
+                // send email to user with OTP
+                sendEmail(email, 'OTP', `Your OTP is ${otp}`);
+                res.json({ message: 'OTP sent' });
+
+                // delete all OTPs for that user that are not verified and have expired after 5 minutes
+                await OtpModel.deleteMany({ userID: user._id, isVerified: false, expiryTime: { $lt: Date.now() } });
+             
+            }
+            else {
+                res.status(400);
+                throw new Error('Invalid OTP data');
+            }
+        }
+
+            
+        
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+    })
+
+    const verifyOTP = expressAsyncHandler(async (req, res) => {
+        const { email, otp } = req.body;
+        try {
+            const user = await UserModel.findOne({ email });
+            if (user) {
+            }
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    })
+
     
 
 
 
 
 
-export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers, googleRegisterorLogin };
+export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers, googleRegisterorLogin, sendOTP, removeLikedMovie };
