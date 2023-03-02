@@ -77,6 +77,7 @@ const getMovieById = asyncHandler(async (req, res) => {
 const topRatedMovies = asyncHandler(async (req, res) => {
     try {
         const movies = await MovieModel.find({}).sort({ rate: -1 }).limit(10);
+        console.log(movies);
         res.json(movies);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -86,6 +87,7 @@ const topRatedMovies = asyncHandler(async (req, res) => {
 const getRandomMovies = asyncHandler(async (req, res) => {
     try {
         const movies = await MovieModel.aggregate([{ $sample: { size: 10 } }]);
+        console.log(movies);
         res.json(movies);
     } catch (error) {
         res.status(400).json({ message: error.message });

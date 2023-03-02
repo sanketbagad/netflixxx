@@ -9,7 +9,7 @@ const getCategories = asynchandler(async (req, res) => {
 
 const createCategory = asynchandler(async (req, res) => {
     try {
-       const { title} = req.body;
+       const { title } = req.body;
 
        const category = await CategoriesModel.create({
               title,
@@ -62,3 +62,4 @@ const deleteCategory = asynchandler(async (req, res) => {
 });
 
 export { getCategories, createCategory, updateCategory, deleteCategory };
+

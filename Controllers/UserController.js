@@ -162,8 +162,10 @@ const getUserLikedMovies = expressAsyncHandler(async (req, res) => {
 });
 
 const addLikedMovie = expressAsyncHandler(async (req, res) => {
-    const { movieId } = req.body;
     try {
+        let movieId = req.params.id;
+        console.log(movieId);
+
         const user = await UserModel.findById(req.user._id);
         if (user) {
             if (user.likedMovies.includes(movieId)) {
