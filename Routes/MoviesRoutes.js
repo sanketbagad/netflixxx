@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/importMovies", importMovies);
 router.delete("/deleteAllMovies", deleteAllMovies);
-router.get("/m", getMovies);
+router.get("/", getMovies);
 router.get("/m/:id", getMovieById);
 router.get("/topRatedMovies", topRatedMovies);
 router.get("/randomMovies", getRandomMovies);
@@ -13,7 +13,7 @@ router.post("/m/:id/reviews", protect, createMovieReview);
 
 router.put("/m/:id", protect, admin, updateMovie);
 router.delete("/m/:id", protect, admin, deleteMovie);
-router.post("/m", protect, admin, createMovie);
+router.post("/", protect, admin, createMovie);
 
 export default router;
 
