@@ -6,13 +6,13 @@ const router = express.Router();
 router.post("/importMovies", importMovies);
 router.delete("/deleteAllMovies", deleteAllMovies);
 router.get("/", getMovies);
-router.get("/movies/:id", getMovieById);
-router.get("/m/topRatedMovies", topRatedMovies);
-router.get("/m/randomMovies", getRandomMovies);
+router.get("/:id", getMovieById);
+router.get("/topRatedMovies", topRatedMovies);
+router.get("/randomMovies", getRandomMovies);
 router.post("/:id/reviews", protect, createMovieReview);
 
-router.put("/movies/:id", protect, admin, updateMovie);
-router.delete("/movies/:id", protect, admin, deleteMovie);
+router.put("/:id", protect, admin, updateMovie);
+router.delete("/:id", protect, admin, deleteMovie);
 router.post("/", protect, admin, createMovie);
 
 export default router;
