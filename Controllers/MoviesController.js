@@ -97,7 +97,7 @@ const getRandomMovies = asyncHandler(async (req, res) => {
 const createMovieReview = asyncHandler(async (req, res) => {
     try {
         const { rate, comment } = req.body;
-        const movie = await MovieModel.findById(req.params.id);
+        const movie = await MovieModel.findById(req.body.id);
         if (movie) {
             const alreadyReviewed = movie.reviews.find(
                 (r) => r.user.toString() === req.user._id.toString()
