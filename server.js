@@ -6,7 +6,8 @@ import userRouter from './Routes/UserRoutes.js';
 import movieRouter from './Routes/MoviesRoutes.js';
 import categoryRouter from './Routes/CategoriesRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
-import uploadRouter from "./Controllers/UploadFile.js"
+import uploadRouter from "./Controllers/UploadFile.js";
+import movRouter from "./Routes/movieroutes2.js";
 dotenv.config();
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/users', userRouter);
 app.use('/api/movies', movieRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/mov', movRouter);
 
 app.use(errorHandler);
 

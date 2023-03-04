@@ -4,11 +4,11 @@ import { protect, admin } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.post("/importMovies", importMovies);
-router.delete("/deleteAllMovies", deleteAllMovies);
+// router.delete("/deleteAllMovies", deleteAllMovies);
 router.get("/", getMovies);
 router.get("/:id", getMovieById);
-router.get("/topRatedMovies", topRatedMovies);
-router.get("/randomMovies", getRandomMovies);
+// router.get("/topRatedMovies", topRatedMovies);
+// router.get("/randomMovies", getRandomMovies);
 router.post("/:id/reviews", protect, createMovieReview);
 
 router.put("/:id", protect, admin, updateMovie);
