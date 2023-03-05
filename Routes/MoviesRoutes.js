@@ -9,7 +9,7 @@ router.get("/", getMovies);
 router.get("/:id", getMovieById);
 // router.get("/topRatedMovies", topRatedMovies);
 // router.get("/randomMovies", getRandomMovies);
-router.post("/reviews", protect, createMovieReview);
+
 
 router.put("/:id", protect, admin, updateMovie);
 router.delete("/:id", protect, admin, deleteMovie);

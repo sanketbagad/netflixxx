@@ -8,13 +8,19 @@ import categoryRouter from './Routes/CategoriesRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import uploadRouter from "./Controllers/UploadFile.js";
 import movRouter from "./Routes/movieroutes2.js";
+import paymentRouter from './middleware/stripeMiddleware.js';
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json({
-    limit: '500mb'
+    limit: '500mb',
+    verify: function (req, res, buf) {
+        if (req.originalUrl.startsWith('/webhook')) {
+            req.rawBody = buf.toString();
+        }
+    },
 }));
 
 app.use(express.urlencoded({
@@ -33,6 +39,7 @@ app.use('/api/movies', movieRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/mov', movRouter);
+app.use('/api/payment', paymentRouter);
 
 app.use(errorHandler);
 
