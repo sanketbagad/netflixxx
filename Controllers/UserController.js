@@ -172,7 +172,7 @@ const addLikedMovie = expressAsyncHandler(async (req, res) => {
                 res.status(400);
                 throw new Error('Movie already liked');
             }
-            user.likedMovies.push(movieId.trim());
+            user.likedMovies.push(movieId);
             await user.save();
             res.json(user.likedMovies);
         }
