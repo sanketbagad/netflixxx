@@ -163,7 +163,7 @@ const getUserLikedMovies = expressAsyncHandler(async (req, res) => {
 
 const addLikedMovie = expressAsyncHandler(async (req, res) => {
     try {
-        let movieId = req.params.id;
+        let { movieId } = req.body;
         console.log(movieId);
 
         const user = await UserModel.findById(req.user._id);

@@ -9,7 +9,7 @@ router.put('/profile', protect, updateUserProfile);
 router.delete('/delete', protect, deleteUser);
 router.put('/changePassword', protect, changePassword);
 router.get('/likedMovies', protect, getUserLikedMovies);
-router.post('/likedMovies/:id', protect, addLikedMovie);
+router.post('/likedMovies', protect, addLikedMovie);
 router.delete('/likedMovies', protect, removeAllLikedMovies);
 router.delete('/removeFav', protect, removeLikedMovie);
 router.get('/users', protect,  admin, getUsers);
