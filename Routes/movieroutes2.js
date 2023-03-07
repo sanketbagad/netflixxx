@@ -4,7 +4,7 @@ import { protect, admin } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.delete("/deleteAllMovies", deleteAllMovies);
-router.post("/reviews", protect, createMovieReview);
+// router.post("/reviews/", protect, createMovieReview);
 router.get("/topRatedMovies", topRatedMovies);
 router.get("/randomMovies", getRandomMovies);
 router.post("/importMovies", importMovies);
