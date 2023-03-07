@@ -109,14 +109,14 @@ const createMovieReview = asyncHandler(async (req, res) => {
             const review = {
                 userName: req.user.fullName,
                 userImage: req.user.image,
-                rating: Number(rate),
+                rating: rate,
                 comment,
                 user: req.user._id,
             };
             movie.reviews.push(review);
             movie.numberOfReviews = movie.reviews.length;
             movie.rate =
-                movie.reviews.reduce((acc, item) => item.rate + acc, 0) /
+                movie.reviews.reduce((acc, item) => item.rating + acc, 0) /
                 movie.reviews.length;
             await movie.save();
             res.status(201).json({ message: "Review added" });
