@@ -70,7 +70,7 @@ export const Movies = [
     time: 2,
     video:
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/d6daebb6-40f2-4eaa-b2c4-14455059f97bHaseen.Dillruba.2021.Hindi.1080p.NF.WEB-DL.AAC.x264.mkv?alt=media",
-    trailer: "https://youtu.be/watch?v=KkFObh8o3H0&autoplay=1",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/3ebe5c9d-e752-4eb9-98fb-72dc36b64bb8video 1678126095225.mp4?alt=media",
     rate: 7.1,
   },
   {

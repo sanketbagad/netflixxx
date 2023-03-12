@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, updateUserProfile, deleteUser, changePassword, getUserLikedMovies, addLikedMovie, removeLikedMovie, removeAllLikedMovies, getUsers, deleteUserById, deleteAllUsers  } from '../Controllers/UserController.js';
+import { registerUser, loginUser, updateUserProfile, deleteUser, changePassword, getUserLikedMovies, addLikedMovie, removeLikedMovie, removeAllLikedMovies, getUsers, deleteUserById, deleteAllUsers, googleRegisterorLogin  } from '../Controllers/UserController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 const router = express.Router();
 
@@ -15,6 +15,7 @@ router.delete('/removeFav', protect, removeLikedMovie);
 router.get('/users', protect,  admin, getUsers);
 router.delete('/users/:id', protect, admin, deleteUserById);
 router.delete('/users', protect, admin, deleteAllUsers);
+router.post('/google', googleRegisterorLogin);
 
 
 export default router;
