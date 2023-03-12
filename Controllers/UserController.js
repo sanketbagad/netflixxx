@@ -274,7 +274,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
             // if user exists, generate token and send it back
             res.json({
                 _id: user._id,
-                name: user.name,
+                name: user.fullName,
                 email: user.email,
                 image: user.image,
                 isAdmin: user.isAdmin,
@@ -285,7 +285,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
         else {
             // if user does not exist, create a new user
             user = await UserModel.create({
-                name,
+                fullName: name,
                 email,
                 image,
                 password: 'google',
@@ -293,7 +293,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
             if (user) {
                 res.json({
                     _id: user._id,
-                    name: user.name,
+                    name: user.fullName,
                     email: user.email,
                     image: user.image,
                     isAdmin: user.isAdmin,
