@@ -279,6 +279,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
                 image: user.image,
                 isAdmin: user.isAdmin,
                 token: generateToken(user._id),
+                hasPaid: user.hasPaid,
             });
 
         }
@@ -286,8 +287,8 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
             // if user does not exist, create a new user
             user = await UserModel.create({
                 fullName: name,
-                email,
-                image,
+                email: email,
+                image: image,
                 password: 'google',
             });
             if (user) {
@@ -298,6 +299,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
                     image: user.image,
                     isAdmin: user.isAdmin,
                     token: generateToken(user._id),
+                    hasPaid: user.hasPaid,
                 });
             }
             else {

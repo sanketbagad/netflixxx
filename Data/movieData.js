@@ -10,36 +10,8 @@ export const Movies = [
     time: 1,
     video:
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
-    trailer: "https://www.youtube.com/watch?v=5xH0HfJHsaY&autoplay=1",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
     rate: 9.3,
-  },
-  {
-    name: "Attack on Titan Season 1 Episode 2",
-    desc: "Anime based on the story of a boy and his friends who are trying to save the world from the Titans.",
-    titleImage: "https://flxt.tmsimg.com/assets/p10701949_b_v8_ah.jpg",
-    image: "https://flxt.tmsimg.com/assets/p10701949_b_v8_ah.jpg",
-    category: "Anime",
-    language: "English",
-    year: 2013,
-    time: 1,
-    video:
-      "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
-    trailer: "https://www.youtube.com/watch?v=5xH0HfJHsaY&autoplay=1",
-    rate: 9.3,
-  },
-  {
-    name: "Attack on Titan Season 1 Episode 3",
-    desc: "Anime based on the story of a boy and his friends who are trying to save the world from the Titans.",
-    titleImage: "https://flxt.tmsimg.com/assets/p10701949_b_v8_ah.jpg",
-    image: "https://flxt.tmsimg.com/assets/p10701949_b_v8_ah.jpg",
-    category: "Anime",
-    language: "English",
-    year: 2013,
-    time: 1,
-    video:
-      "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
-    trailer: "https://www.youtube.com/watch?v=5xH0HfJHsaY&autoplay=1",
-    rate: 6.4,
   },
   {
     name: "Installing Node JS",
@@ -54,7 +26,7 @@ export const Movies = [
     time: 1,
     video:
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/8796c710-7015-4c0b-a7fc-fdbe76f5290c5. Installing Node JS.mp4?alt=media",
-    trailer: "https://www.youtube.com/watch?v=5xH0HfJHsaY&autoplay=1",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/8796c710-7015-4c0b-a7fc-fdbe76f5290c5. Installing Node JS.mp4?alt=media",
     rate: 8.3,
   },
   {
@@ -86,7 +58,7 @@ export const Movies = [
     time: 2,
     video:
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/864e6610-65f0-43d3-8c8d-09bc4b4180d250 Shades Darker 2017 (Hindi-English) HD.mkv?alt=media",
-    trailer: "https://www.youtube.com/watch?v=Zm0sX8Yk5Ko&autoplay=1",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/864e6610-65f0-43d3-8c8d-09bc4b4180d250 Shades Darker 2017 (Hindi-English) HD.mkv?alt=media",
     rate: 4.6,
   },
 ];
