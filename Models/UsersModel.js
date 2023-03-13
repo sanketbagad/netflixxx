@@ -53,6 +53,35 @@ const otpSchema = new mongoose.Schema({
     timestamps: true,
 });
 
+const querySchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    query: {
+        type: String,
+        required: true,
+    },
+    isAnswered: {
+        type: Boolean,
+        default: false,
+    },
+    answer: {
+        type: String,
+    },
+    image: {
+        type: String,
+    },
+    subject: {
+        type: String,
+        required: true,
+    },
+},
+{
+    timestamps: true,
+});
+
 const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
@@ -101,6 +130,7 @@ const userSchema = new mongoose.Schema({
 const UserModel = mongoose.model("User", userSchema);
 const PaymentModel = mongoose.model("Payment", paymentSchema);
 const OtpModel = mongoose.model("Otp", otpSchema);
+const QueryModel = mongoose.model("Query", querySchema);
 
-export { UserModel, PaymentModel, OtpModel };
+export { UserModel, PaymentModel, OtpModel, QueryModel };
 

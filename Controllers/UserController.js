@@ -1,9 +1,10 @@
 import expressAsyncHandler from "express-async-handler";
-import {UserModel} from "../Models/UsersModel.js";
+import {UserModel, QueryModel} from "../Models/UsersModel.js";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../middleware/authMiddleware.js";
 import sendEmail from "../middleware/emailMiddleware.js";
 import { OtpModel } from "../Models/UsersModel.js";
+
 const registerUser = expressAsyncHandler(async (req, res) => {
   const { name, email, password, image } = req.body;
   try {
@@ -25,7 +26,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
     });
 
     if (user) {
-        sendEmail(user.email, `Welcome to Netflixxx, ${user.fullName}!`, `Thank you for registering with us. We hope you enjoy your stay!`, `<h1>Welcome to Netflixxx, ${user.fullName}!</h1><p>Thank you for registering with us. We hope you enjoy your stay!</p> <h2> Subscription Details </h2> <p> You have not yet subscribed to any of our plans. Please visit our website to subscribe to a plan. </p>`);
+        sendEmail(user.email, `Welcome to Plixx, ${user.fullName}!`, `Thank you for registering with us. We hope you enjoy your stay!`, `<h1>Welcome to Plixx, ${user.fullName}!</h1><p>Thank you for registering with us. We hope you enjoy your stay!</p> <h2> Subscription Details </h2> <p> You have not yet subscribed to any of our plans. Please visit our website to subscribe to a plan. </p>`);
         res.status(201).json({
             _id: user._id,
             name: user.fullName,
@@ -292,6 +293,7 @@ const googleRegisterorLogin = expressAsyncHandler(async (req, res) => {
                 password: 'google',
             });
             if (user) {
+                sendEmail(user.email, `Welcome to Plixx, ${user.fullName}!`, `Thank you for registering with us. We hope you enjoy your stay!`, `<h1>Welcome to Plixx, ${user.fullName}!</h1><p>Thank you for registering with us. We hope you enjoy your stay!</p> <h2> Subscription Details </h2> <p> You have not yet subscribed to any of our plans. Please visit our website to subscribe to a plan. </p>`);
                 res.json({
                     _id: user._id,
                     name: user.fullName,
@@ -361,10 +363,48 @@ const sendOTP = expressAsyncHandler(async (req, res) => {
         }
     })
 
+const createQueryRequest = (req, res) => {
+    const { query, subject, image } = req.body;
+    try {
+        const newQuery = QueryModel.create({
+            query,
+            subject,
+            image,
+            userId: req.user._id,
+        });
+        if (newQuery) {
+            let users = [];
+            // now get email of user and send email to admin
+            const user = UserModel.findById(req.user._id);
+            let adminUser = UserModel.find({ isAdmin: true });
+
+            // get email of user
+            users.push(user.email);
+
+            // now get emails of all admin users
+            adminUser.forEach((user) => {
+                users.push(user.email);
+            });
+
+            // send email to all users
+            users.forEach((user) => {
+                sendEmail(user, 'Your Query to Plixx!!', `Thank you for contacting us. We will get back to you soon.`);
+            });
+            res.json({ message: 'Query created' });
+        }
+        else {
+            res.status(400);
+            throw new Error('Invalid query data');
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
     
 
 
 
 
 
-export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers, googleRegisterorLogin, sendOTP, removeLikedMovie };
+export { registerUser , loginUser , updateUserProfile , deleteUser , changePassword , getUserLikedMovies , addLikedMovie, removeAllLikedMovies , getUsers , deleteUserById , deleteAllUsers, googleRegisterorLogin, sendOTP, removeLikedMovie, createQueryRequest };
