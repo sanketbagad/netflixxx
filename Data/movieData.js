@@ -12,6 +12,7 @@ export const Movies = [
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
     trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/6493fa67-5428-46aa-9d82-b8d02262e72b01 - Beast Titan.mkv?alt=media",
     rate: 9.3,
+    genres: ["Action", "Adventure", "Drama", "Anime"],
   },
   {
     name: "Installing Node JS",
@@ -28,6 +29,7 @@ export const Movies = [
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/8796c710-7015-4c0b-a7fc-fdbe76f5290c5. Installing Node JS.mp4?alt=media",
     trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/8796c710-7015-4c0b-a7fc-fdbe76f5290c5. Installing Node JS.mp4?alt=media",
     rate: 8.3,
+    genres: ["Tutorial", "Node JS"],
   },
   {
     name: "Haseena Dilruba",
@@ -44,6 +46,7 @@ export const Movies = [
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/d6daebb6-40f2-4eaa-b2c4-14455059f97bHaseen.Dillruba.2021.Hindi.1080p.NF.WEB-DL.AAC.x264.mkv?alt=media",
     trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/3ebe5c9d-e752-4eb9-98fb-72dc36b64bb8video 1678126095225.mp4?alt=media",
     rate: 7.1,
+    genres: ["Romance", "Thriller", "Bollywood"],
   },
   {
     name: "50 Shades Darker",
@@ -60,5 +63,20 @@ export const Movies = [
       "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/864e6610-65f0-43d3-8c8d-09bc4b4180d250 Shades Darker 2017 (Hindi-English) HD.mkv?alt=media",
     trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/864e6610-65f0-43d3-8c8d-09bc4b4180d250 Shades Darker 2017 (Hindi-English) HD.mkv?alt=media",
     rate: 4.6,
+    genres: ["Romance", "Thriller", "Hollywood"],
   },
+  {
+    name: "Shiddat",
+    desc: "Shiddat is a 2021 Indian Hindi-language romantic drama film directed by Kunal Deshmukh and produced by Bhushan Kumar, Krishan Kumar, and Lizelle D'Souza under the banner of T-Series. The film stars Radhika Madan, Sunny Kaushal, and Mohit Raina.",
+    titleImage: "https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/2068/1062068-h-54b155e41999",
+    image: "https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/2068/1062068-h-54b155e41999",
+    category: "Bollywood",
+    language: "Hindi",
+    year: 2021,
+    time: 2,
+    video: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/9d070537-c702-4c3c-b9cb-f7f9209e67a45_6248843215684764517.mkv?alt=media",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/c5713db5-3e69-48dd-b15a-c55d240cb5c0videoplayback.mp4?alt=media",
+    rate: 7.1,
+    genres: ["Romance", "Drama", "Bollywood"],
+  }
 ];

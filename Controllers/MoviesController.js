@@ -74,6 +74,37 @@ const getMovieById = asyncHandler(async (req, res) => {
     }
 });
 
+
+const bollywoodGenre = asyncHandler(async (req, res) => {
+    // genre is array of strings
+    try {
+         const movies = await MovieModel.find({ genres: { $in: ["Bollywood"] } }).limit(req.query.limit || 10);
+        res.json(movies);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+const hollywoodGenre = asyncHandler(async (req, res) => {
+    // genre is array of strings
+    try {
+            const movies = await MovieModel.find({ genres: { $in: ["Hollywood"] } }).limit(req.query.limit || 10);
+        res.json(movies);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+const newReleaseMovies = asyncHandler(async (req, res) => {
+    try {
+        const movies = await MovieModel.find({}).sort({ createdAt: -1 }).limit(req.query.limit || 10);
+        console.log(movies);
+        res.json(movies);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
 const topRatedMovies = asyncHandler(async (req, res) => {
     try {
         const movies = await MovieModel.find({}).sort({ rate: -1 }).limit(10);
@@ -191,6 +222,7 @@ const createMovie = asyncHandler(async (req, res) => {
             trailer,
             casts: req.body.casts,
             user: req.user._id,
+            genres: req.body.genres,
         });
         if (movie) {
         const createdMovie = await movie.save();
@@ -207,4 +239,4 @@ const createMovie = asyncHandler(async (req, res) => {
 
 
 
-export { importMovies , deleteAllMovies , getMovies , getMovieById, topRatedMovies, getRandomMovies , createMovieReview, updateMovie , deleteMovie, createMovie }
+export { importMovies , deleteAllMovies , getMovies , getMovieById, topRatedMovies, getRandomMovies , createMovieReview, updateMovie , deleteMovie, createMovie , newReleaseMovies, bollywoodGenre, hollywoodGenre };
