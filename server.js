@@ -10,6 +10,7 @@ import uploadRouter from "./Controllers/UploadFile.js";
 import movRouter from "./Routes/movieroutes2.js";
 import paymentRouter from './middleware/stripeMiddleware.js';
 import trailerRouter from './Controllers/UploadTrailer.js';
+import loginMovieRouter from './Routes/LoginMovieRoutes.js';
 dotenv.config();
 
 const app = express();
@@ -42,6 +43,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/mov', movRouter);
 app.use('/api/payment', paymentRouter);
 app.use('/api/trailer', trailerRouter);
+app.use('/api/loginMovies', loginMovieRouter);
 
 app.use(errorHandler);
 
