@@ -78,5 +78,20 @@ export const Movies = [
     trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/c5713db5-3e69-48dd-b15a-c55d240cb5c0videoplayback.mp4?alt=media",
     rate: 7.1,
     genres: ["Romance", "Drama", "Bollywood"],
-  }
+  },
+  {
+    name: "John Wick",
+    desc: "An ex-hitman comes out of retirement to track down the gangsters that killed his dog and took everything from him.",
+    titleImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1faFLl_0arftACtVoBAezbfcd-8RbtddKA&usqp=CAU",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1faFLl_0arftACtVoBAezbfcd-8RbtddKA&usqp=CAU",
+    category: "Action",
+    language: "English",
+    year: 2014,
+    time: 2,
+    video: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/758cbde1-04f3-4339-9253-69cefea3c504John.Wick.2014.720p.BRRip.x264.Ganool.SoftSub.Sermovie.mkv?alt=media",
+    trailer: "https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/0f24b63d-0752-47bf-a1ae-121a70c2ee3avideoplayback (1).mp4?alt=media",
+    rate: 7.4,
+    genres: ["Action", "Thriller", "Hollywood"],
+    isPaid: true,
+  },
 ];

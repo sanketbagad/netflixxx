@@ -48,7 +48,18 @@ const getMovies = asyncHandler(async (req, res) => {
         .skip(skip);
       const count = await MovieModel.countDocuments(query);
       res.json({ movies, page, pages: Math.ceil(count / limit) });
-    } else {
+    } 
+    else if (req.user && req.user.isAdmin) {
+        try {
+            const movies = await MovieModel.find(query)
+            .sort({ createdAt: -1 })
+            .limit(limit)
+            .skip(skip);
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+    else {
       // only show movies having isPaid = false
       const movies = await MovieModel.find({ ...query, isPaid: false })
         .sort({ createdAt: -1 })
