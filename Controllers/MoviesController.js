@@ -84,13 +84,12 @@ const bollywoodGenre = asyncHandler(async (req, res) => {
       }).limit(req.query.limit || 10);
       res.json(movies);
     } else {
-        const movies = await MovieModel.find({
-            genres: { $in: ["Bollywood"] },
-            isPaid: false,
-            }).limit(req.query.limit || 10);
-        res.json(movies);
+      const movies = await MovieModel.find({
+        genres: { $in: ["Bollywood"] },
+        isPaid: false,
+      }).limit(req.query.limit || 10);
+      res.json(movies);
     }
-    
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -105,11 +104,11 @@ const hollywoodGenre = asyncHandler(async (req, res) => {
       }).limit(req.query.limit || 10);
       res.json(movies);
     } else {
-        const movies = await MovieModel.find({
-            genres: { $in: ["Hollywood"] },
-            isPaid: false,
-            }).limit(req.query.limit || 10);
-            res.json(movies);
+      const movies = await MovieModel.find({
+        genres: { $in: ["Hollywood"] },
+        isPaid: false,
+      }).limit(req.query.limit || 10);
+      res.json(movies);
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -125,11 +124,11 @@ const newReleaseMovies = asyncHandler(async (req, res) => {
       console.log(movies);
       res.json(movies);
     } else {
-        const movies = await MovieModel.find({ isPaid: false })
+      const movies = await MovieModel.find({ isPaid: false })
         .sort({ createdAt: -1 })
         .limit(req.query.limit || 10);
-        console.log(movies);
-        res.json(movies);
+      console.log(movies);
+      res.json(movies);
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -309,6 +308,15 @@ const createMovie = asyncHandler(async (req, res) => {
   }
 });
 
+const premiumMovies = asyncHandler(async (req, res) => {
+  try {
+    const movies = await MovieModel.find({ isPaid: true });
+    res.json(movies);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 export {
   importMovies,
   deleteAllMovies,
@@ -323,4 +331,5 @@ export {
   newReleaseMovies,
   bollywoodGenre,
   hollywoodGenre,
+  premiumMovies,
 };

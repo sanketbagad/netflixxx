@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteAllMovies, topRatedMovies, getRandomMovies, createMovieReview, importMovies, bollywoodGenre, hollywoodGenre, newReleaseMovies } from "../Controllers/MoviesController.js";
+import { deleteAllMovies, topRatedMovies, getRandomMovies, createMovieReview, importMovies, bollywoodGenre, hollywoodGenre, newReleaseMovies, premiumMovies } from "../Controllers/MoviesController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.post("/importMovies", importMovies);
 router.get("/bollywoodGenre", bollywoodGenre);
 router.get("/hollywoodGenre", hollywoodGenre);
 router.get("/newReleaseMovies", newReleaseMovies);
+router.get("/premiumMovies", premiumMovies);
 
 
 export default router;
