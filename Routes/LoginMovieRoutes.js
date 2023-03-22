@@ -20,6 +20,6 @@ router.post("/bollywoodGenre", protect, admin, bollywoodGenre);
 router.post("/hollywoodGenre", protect, admin, hollywoodGenre);
 router.post("/newReleaseMovies", protect, admin, newReleaseMovies);
 router.post("/premiumMovies", protect, admin, premiumMovies);
-router.post("/admin", protect, admin, getMovies);
+router.get("/admin", protect, admin, getMovies);
 
 export default router;
