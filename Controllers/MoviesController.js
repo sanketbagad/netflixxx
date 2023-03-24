@@ -110,7 +110,7 @@ const continueWatching = asyncHandler(async (req, res) => {
   try{
     if(req.user){
       const movies = await MovieModel.find({
-        _id: { $in: req.user.continueWatching },
+        _id: { $in: req.body.movieIds },
       }).limit(req.query.limit || 10);
       res.json(movies);
     }
