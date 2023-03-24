@@ -1,5 +1,5 @@
 import express from "express";
-import {  topRatedMovies, getRandomMovies, getMovies, bollywoodGenre, hollywoodGenre, newReleaseMovies, premiumMovies } from "../Controllers/MoviesController.js";
+import {  topRatedMovies, getRandomMovies, getMovies, bollywoodGenre, hollywoodGenre, newReleaseMovies, premiumMovies, continueWatching } from "../Controllers/MoviesController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
@@ -12,6 +12,7 @@ router.get("/hollywoodGenre", protect, hollywoodGenre);
 router.get("/newReleaseMovies", protect, newReleaseMovies);
 router.get("/premiumMovies", protect, premiumMovies);
 router.get("/", protect, getMovies);
+router.get("/continueWatching", protect, continueWatching);
 
 // for admin users
 router.post("/topRatedMovies", protect, admin, topRatedMovies);

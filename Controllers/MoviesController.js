@@ -106,6 +106,20 @@ const bollywoodGenre = asyncHandler(async (req, res) => {
   }
 });
 
+const continueWatching = asyncHandler(async (req, res) => {
+  try{
+    if(req.user){
+      const movies = await MovieModel.find({
+        _id: { $in: req.user.continueWatching },
+      }).limit(req.query.limit || 10);
+      res.json(movies);
+    }
+  } 
+  catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 const hollywoodGenre = asyncHandler(async (req, res) => {
   // genre is array of strings
   try {
@@ -343,4 +357,5 @@ export {
   bollywoodGenre,
   hollywoodGenre,
   premiumMovies,
+  continueWatching
 };
