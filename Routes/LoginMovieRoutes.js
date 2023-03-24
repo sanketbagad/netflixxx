@@ -12,7 +12,7 @@ router.get("/hollywoodGenre", protect, hollywoodGenre);
 router.get("/newReleaseMovies", protect, newReleaseMovies);
 router.get("/premiumMovies", protect, premiumMovies);
 router.get("/", protect, getMovies);
-router.get("/continueWatching", protect, continueWatching);
+router.post("/continueWatching", protect, continueWatching);
 
 // for admin users
 router.post("/topRatedMovies", protect, admin, topRatedMovies);
