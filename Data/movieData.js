@@ -139,6 +139,8 @@ export const Movies = [
     genres: ["Drama", "Marathi", "Bollywood"],
   },
 
+  // https://firebasestorage.googleapis.com/v0/b/netflixx-6dab7.appspot.com/o/Pathan.mkv?alt=media
+
   // {
   //   name: "Indian Cheating Wife",
   //   desc: "Indian Cheating Wife",
