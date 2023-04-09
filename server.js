@@ -43,7 +43,7 @@ app.use('/bunnycdn', createProxyMiddleware({
     changeOrigin: true,
     headers: {
         "AccessKey": "93a36ca2-a928-43ce-b6a6851c44b9-06d0-4523",
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://storage.bunnycdn.com, https://plixx.co.in, https://plixx.co.in/bunnycdn, http://localhost:3000, http://localhost:1001, https://www.plixx.co.in, https://www.plixx.co.in/*',
     'Access-Control-Allow-Headers': 'access-control-allow-origin',
     },
     pathRewrite: {
