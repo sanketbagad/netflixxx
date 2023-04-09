@@ -20,6 +20,10 @@ const app = express();
 app.use(cors({
     origin: 'https://plixx.co.in, https://www.plixx.co.in, https://www.plixx.co.in/*, http://localhost:3000, http://localhost:1001',
     credentials: true,
+    exposedHeaders: ['set-cookie', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Credentials', 'AccessKey'],
+    allowedHeaders: ['set-cookie', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Credentials', 'AccessKey'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    preflightContinue: false,
 }));
 app.use(express.json({
     limit: '500mb',
@@ -47,7 +51,7 @@ app.use('/bunnycdn', createProxyMiddleware({
     headers: {
         "AccessKey": "93a36ca2-a928-43ce-b6a6851c44b9-06d0-4523",
         'Access-Control-Allow-Origin': 'https://storage.bunnycdn.com, https://plixx.co.in, https://plixx.co.in/bunnycdn, http://localhost:3000, http://localhost:1001, https://www.plixx.co.in, https://www.plixx.co.in/*',
-    'Access-Control-Allow-Headers': 'access-control-allow-origin',
+        'Access-Control-Allow-Headers': 'access-control-allow-origin',
     },
     pathRewrite: {
         '^/bunnycdn': ''
