@@ -42,7 +42,7 @@ app.use(express.json({
 }));
 
 app.use(express.urlencoded({
-    limit: '500mb',
+    limit: '500000mb',
     extended: true
 }));
 
