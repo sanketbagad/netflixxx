@@ -37,7 +37,7 @@ bunnyRouter.post("/", upload.single("file"), async (req, res) => {
             }
             else if (response.status === 201) {
                 const publicUrl = `https://storage.bunnycdn.com/plixxx/${fileName}`;
-                res.status(201).json(publicUrl)
+                res.status(201).json(publicUrl).setHeader('Access-Control-Allow-Origin', 'https://storage.bunnycdn.com, https://plixx.co.in, https://plixx.co.in/bunnycdn, http://localhost:3000, http://localhost:1001, https://www.plixx.co.in, https://www.plixx.co.in/*');
             }     
             else {
                 res.status(500).json({error: "Error uploading file"});

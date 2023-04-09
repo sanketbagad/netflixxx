@@ -17,6 +17,13 @@ dotenv.config();
 
 const app = express();
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://storage.bunnycdn.com, https://plixx.co.in, https://plixx.co.in/bunnycdn, http://localhost:3000, http://localhost:1001, https://www.plixx.co.in, https://www.plixx.co.in/*');
+    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin');
+    res.setHeader('AccessKey', '93a36ca2-a928-43ce-b6a6851c44b9-06d0-4523');
+    next();
+});
+
 app.use(cors({
     origin: 'https://plixx.co.in, https://www.plixx.co.in, https://www.plixx.co.in/*, http://localhost:3000, http://localhost:1001',
     credentials: true,
