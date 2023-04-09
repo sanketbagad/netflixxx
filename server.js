@@ -17,7 +17,10 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://plixx.co.in, https://www.plixx.co.in, https://www.plixx.co.in/*, http://localhost:3000, http://localhost:1001',
+    credentials: true,
+}));
 app.use(express.json({
     limit: '500mb',
     verify: function (req, res, buf) {
